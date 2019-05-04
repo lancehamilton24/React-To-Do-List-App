@@ -1,15 +1,18 @@
 import React from 'react';
 import {Button} from 'reactstrap';
+import Modal from 'react-responsive-modal';
 import './Tasks.scss';
 import TasksItem from '../../TasksItem/TasksItem';
 import authRequests from '../../../helpers/data/authRequests';
 import tasksRequest from '../../../helpers/data/tasksRequest';
 import taskShape from '../../../helpers/propz/taskShape';
+import TaskForm from '../../TaskForm/TaskForm';
 
 
 class Tasks extends React.Component {
   state = {
-    tasks: []
+    tasks: [],
+    open: false
   }
   
   static propTypes = {
@@ -23,14 +26,28 @@ class Tasks extends React.Component {
       this.setState({tasks});
     })
   };
-  componentDidMount(){
+
+  componentDidMount() {
     this.getTasks();
   }
 
+  onOpenModal = () => {
+    this.setState({ open: true});
+  };
+
+  onCloseModal = () => {
+    this.setState({ open: false });
+  };
+
+  addTasks = (e) => {
+    const onOpenModal = this.onOpenModal;
+    onOpenModal();
+  }
 
   render() {
     const {
-      tasks
+      tasks,
+      open,
     } = this.state;
 
     const taskItems = tasks.map(task => (
@@ -40,10 +57,13 @@ class Tasks extends React.Component {
       />
     ));
 
-
     return (
       <div className='tasks'>
-          <div className="addTasks"><Button>Add New Task</Button></div>
+          <Button onClick={this.addTasks}>Add New Task</Button>
+          <Modal className="addTasksModal" open={open} onClose={this.onCloseModal} center>
+          <TaskForm></TaskForm>
+
+          </Modal>
           <div className="existingTasks">{taskItems}</div>
       </div>
     )
