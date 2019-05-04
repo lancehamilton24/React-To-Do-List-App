@@ -14,7 +14,9 @@ class TasksItem extends React.Component {
 
     return (
       <div className="taskCards card">
+        <div className="card-body">
         <span className="col-3">{task.task}</span>
+        </div>
       </div>
     )
   }

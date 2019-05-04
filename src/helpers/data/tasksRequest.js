@@ -15,11 +15,14 @@ const getAllTasks = uid => new Promise((resolve, reject) => {
         });
       }
       resolve(taskArray);
+      console.log(taskArray);
     })
     .catch((error) => {
       reject(error);
     });
 });
+
+
 
 export default {
   getAllTasks,

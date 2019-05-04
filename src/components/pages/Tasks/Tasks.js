@@ -19,7 +19,7 @@ class Tasks extends React.Component {
   const uid = authRequests.getCurrentUid();
   tasksRequest.getAllTasks(uid)
     .then((tasks) => {
-      this.ListeningStateChangedEvent({tasks})
+      this.setState({tasks});
     })
   };
   componentDidMount(){
@@ -38,6 +38,7 @@ class Tasks extends React.Component {
         key={task.id}
       />
     ));
+
 
     return (
       <div className='tasks'>
