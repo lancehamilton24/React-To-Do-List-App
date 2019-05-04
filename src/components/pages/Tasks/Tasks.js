@@ -1,4 +1,5 @@
 import React from 'react';
+import {Button} from 'reactstrap';
 import './Tasks.scss';
 import TasksItem from '../../TasksItem/TasksItem';
 import authRequests from '../../../helpers/data/authRequests';
@@ -42,6 +43,7 @@ class Tasks extends React.Component {
 
     return (
       <div className='tasks'>
+          <div className="addTasks"><Button>Add New Task</Button></div>
           <div className="existingTasks">{taskItems}</div>
       </div>
     )
