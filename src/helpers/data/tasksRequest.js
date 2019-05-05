@@ -22,8 +22,9 @@ const getAllTasks = uid => new Promise((resolve, reject) => {
     });
 });
 
-
+const postRequest = task => axios.post(`${firebaseUrl}/tasks.json`, task)
 
 export default {
   getAllTasks,
+  postRequest
 };

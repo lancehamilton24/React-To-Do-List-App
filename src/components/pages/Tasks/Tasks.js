@@ -1,14 +1,15 @@
 import React from 'react';
 import './Tasks.scss';
 import TasksItem from '../../TasksItem/TasksItem';
+import TaskForm from '../TaskForm/TaskForm';
 import authRequests from '../../../helpers/data/authRequests';
 import tasksRequest from '../../../helpers/data/tasksRequest';
 import taskShape from '../../../helpers/propz/taskShape';
 
-
 class Tasks extends React.Component {
   state = {
-    tasks: []
+    tasks: [],
+    open: false
   }
   
   static propTypes = {
@@ -19,17 +20,30 @@ class Tasks extends React.Component {
   const uid = authRequests.getCurrentUid();
   tasksRequest.getAllTasks(uid)
     .then((tasks) => {
-      this.setState({tasks});
+      this.setState({ tasks });
     })
   };
-  componentDidMount(){
-    this.getTasks();
-  }
 
+  componentDidMount() {
+    this.getTasks();
+  };
+
+  formSubmitTasks = (task) => {
+    tasksRequest.postRequest(task)
+      .then(() => {
+        const uid = authRequests.getCurrentUid();
+        tasksRequest.getAllTasks(uid)
+          .then((tasks) => {
+            this.setState({ tasks });
+
+      })
+    })
+      .catch(err => console.error('error with tasks post', err));
+  }
 
   render() {
     const {
-      tasks
+      tasks,
     } = this.state;
 
     const taskItems = tasks.map(task => (
@@ -39,9 +53,9 @@ class Tasks extends React.Component {
       />
     ));
 
-
     return (
       <div className='tasks'>
+          <TaskForm onSubmit={this.formSubmitTasks} />
           <div className="existingTasks">{taskItems}</div>
       </div>
     )
