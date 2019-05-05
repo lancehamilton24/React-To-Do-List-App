@@ -1,12 +1,10 @@
 { 
   "task1": {
-    "task": "Walk the dog",
-    "isCompleted": false,
+    "name": "Walk the dog",
     "uid": "DIG6un8TiyPheOxUTrxlKjnXCHn1"
     },
     "task2": {
-      "task": "Take out trash",
-      "isCompleted": false,
+      "name": "Take out trash",
       "uid": "DIG6un8TiyPheOxUTrxlKjnXCHn1"
       }
 }
