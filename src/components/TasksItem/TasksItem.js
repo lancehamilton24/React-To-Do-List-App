@@ -1,5 +1,4 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
 import taskShape from '../../helpers/propz/taskShape'
 
 import './TasksItem.scss';

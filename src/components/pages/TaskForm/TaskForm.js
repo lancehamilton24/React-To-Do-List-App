@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import authRequests from '../../../helpers/data/authRequests';
-// import tasksRequest from '../../../helpers/data/tasksRequest';
 import './TaskForm.scss';
 
 const defaultTask = {
@@ -36,38 +35,8 @@ class TaskForm extends React.Component {
     this.setState({ newTask: defaultTask});
   }
 
-  // componentDidUpdate(prevProps) {
-  //   const { isEditing, editId } = this.props;
-  //   if (prevProps !== this.props && isEditing) {
-  //     tasksRequest.getSingleLineup(editId)
-  //       .then((lineup) => {
-  //         this.setState({ newLineup: lineup.data });
-  //       })
-  //       .catch(err => console.error('error with getSingleListing', err));
-  //   }
-  // }
-
   render() {
     const { newTask } = this.state;
-    // const { isEditing } = this.props;
-    // const title = () => {
-    //   if (isEditing) {
-    //     return <form onSubmit={this.formSubmit}>
-    //     <h2>Edit Your Lineup Here</h2>
-    //       <div className="input-group editLineupForm">
-    //         <input
-    //           type="text"
-    //           className="form-control"
-    //           placeholder="Lineup Name"
-    //           value={newLineupName.lineup}
-    //           onChange={this.lineupChange}
-    //         />
-    //         <div class="input-group-append">
-    //         <button type="button" class="btn btn-outline-warning">Submit</button>
-    //         </div>
-    //       </div>
-    //     </form>;
-    //   }
       return ( 
       <form className="lineupAddition" onSubmit={this.formSubmit}>
           <h2>Add New Lineup Here</h2> 
@@ -86,12 +55,6 @@ class TaskForm extends React.Component {
         </form>
       );
     }
-  //   return (
-  //     <div className="addEditLineup">
-  //       {title()}
-  //     </div>
-  //   );
-  // }
 }
 
 export default TaskForm;
