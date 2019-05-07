@@ -1,11 +1,19 @@
 import React from 'react';
-import taskShape from '../../helpers/propz/taskShape'
-
+import PropTypes from 'prop-types';
+import taskShape from '../../helpers/propz/taskShape';
+import { Button } from 'reactstrap';
 import './TasksItem.scss';
 
 class TasksItem extends React.Component {
   static propTypes = {
     task: taskShape.taskShape,
+    deleteSingleTask: PropTypes.func,
+  }
+
+  deleteTask = (e) => {
+    e.preventDefault();
+    const { deleteSingleTask, task } = this.props;
+    deleteSingleTask(task.id)
   }
 
   render() {
@@ -15,6 +23,7 @@ class TasksItem extends React.Component {
       <div className="taskCards card">
         <div className="card-body">
         <span className="col-3">{task.name}</span>
+        <Button outline color="info" onClick={this.deleteTask}></Button>
         </div>
       </div>
     )

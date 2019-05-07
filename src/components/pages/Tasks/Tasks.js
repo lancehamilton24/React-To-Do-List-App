@@ -41,6 +41,18 @@ class Tasks extends React.Component {
       .catch(err => console.error('error with tasks post', err));
   }
 
+  deleteOne = (taskId) => {
+    tasksRequest.deleteTask(taskId)
+      .then(() => {
+        const uid = authRequests.getCurrentUid();
+        tasksRequest.getAllTasks(uid)
+          .then((tasks) => {
+              this.setState({ tasks })
+          });
+      })
+      .catch(err => console.error('error with task delete', err));
+  }
+
   render() {
     const {
       tasks,
@@ -50,6 +62,7 @@ class Tasks extends React.Component {
       <TasksItem
         task={task}
         key={task.id}
+        deleteSingleTask={this.deleteOne}
       />
     ));
 
