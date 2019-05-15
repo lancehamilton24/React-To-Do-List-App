@@ -23,7 +23,7 @@ class TasksItem extends React.Component {
       <div className="taskCards card">
         <div className="card-body">
         <span className="col-3">{task.name}</span>
-        <Button outline color="info" onClick={this.deleteTask}></Button>
+        <Button outline color="info" onClick={this.deleteTask}>Delete</Button>
         </div>
       </div>
     )

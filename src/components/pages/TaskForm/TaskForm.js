@@ -38,7 +38,7 @@ class TaskForm extends React.Component {
   render() {
     const { newTask } = this.state;
       return ( 
-      <form className="lineupAddition" onSubmit={this.formSubmit}>
+      <form onSubmit={this.formSubmit}>
           <h2>Add New Task Here</h2> 
           <div className="input-group newLineupForm">
             <input

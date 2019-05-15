@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 import connection from '../helpers/data/connections';
 import Auth from '../components/pages/Auth/Auth';
+import Home from '../components/pages/Home/Home';
 import MyNavbar from '../components/MyNavbar/MyNavbar';
 import Tasks from '../components/pages/Tasks/Tasks';
 import './App.scss';
@@ -85,7 +86,7 @@ class App extends Component {
             <div className='row'>
                 <Switch>
                 <PrivateRoute path='/tasks' exact component={Tasks} authed={this.state.authed} />
-                  <PrivateRoute path='/' exact component={Tasks} authed={this.state.authed} />
+                  <PrivateRoute path='/' exact component={Home} authed={this.state.authed} />
                   <PublicRoute path='/auth' component={Auth} authed={this.state.authed} />
                 </Switch>
               </div>
