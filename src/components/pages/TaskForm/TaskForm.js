@@ -32,13 +32,14 @@ class TaskForm extends React.Component {
     const myTask = { ...this.state.newTask };
     myTask.uid = authRequests.getCurrentUid();
     onSubmit(myTask);
-    this.setState({ newTask: defaultTask});
+    document.getElementById("taskForm").reset();
+    this.setState({newTask: ''});
   }
 
   render() {
     const { newTask } = this.state;
       return ( 
-      <form onSubmit={this.formSubmit}>
+      <form id="taskForm" onSubmit={this.formSubmit}>
           <h2>Add New Task Here</h2> 
           <div className="input-group newLineupForm">
             <input
